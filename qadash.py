@@ -10,5 +10,5 @@ def login():
     if  password == '123': 
       st.success("logged in")
     
-if __name__ = __main__:
+if __name__ == __main__:
   login()
