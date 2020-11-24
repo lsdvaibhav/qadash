@@ -24,7 +24,7 @@ def home():
   activities = ["EDA","Plots"]	
   choice = st.selectbox("Select Activities",activities)
   if choice == 'EDA':
-		st.subheader("Exploratory Data Analysis")
+    st.subheader("Exploratory Data Analysis")
     data = st.file_uploader("Upload a Dataset", type=["csv", "txt"])
     if data is not None:
       df = pd.read_csv(data)
