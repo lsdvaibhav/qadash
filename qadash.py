@@ -15,7 +15,7 @@ def login():
   st.title("qaDash")
   st.subheader("Login")
   username = st.sidebar.text_input("Username")
-  password = st.sidebar.text_input("Enter a password",type="password")
+  password = st.sidebar.text_input("Enter a password")
   if st.sidebar.button("Login"):
     if  password == '123': 
       home()
