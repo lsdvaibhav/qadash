@@ -22,7 +22,7 @@ def login():
 
 def home():
   activities = ["EDA","Plots"]	
-	choice = st.sidebar.selectbox("Select Activities",activities)
+  choice = st.sidebar.selectbox("Select Activities",activities)
 
   data = st.file_uploader("Upload a Dataset", type=["csv", "txt"])
   if data is not None:
