@@ -1,1 +1,1 @@
-gunicorn: web app:app
+web: streamlit run --server.enableCORS false --server.port $PORT qadash.py
