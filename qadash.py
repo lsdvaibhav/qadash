@@ -61,7 +61,7 @@ def main():
 			st.write(type(options))
 			if len(options) != 0: 
 				selectedDf = df['Item'].isin(options)
-				selectedDf.drop(['Website','Quantity'],axis =1) 
+				#selectedDf.drop(columns=['Website','Quantity']) 
 				st.dataframe(selectedDf)
 				
 				df = selectedDf.transpose()
