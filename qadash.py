@@ -46,6 +46,7 @@ def main():
 		plt.legend()
 		# Display a figure.
 		plt.show()
+		st.line_chart(df)
 		data = st.file_uploader("Upload a Dataset", type=["csv", "txt"])
 		if data is not None:
 			df = pd.read_csv(data)
