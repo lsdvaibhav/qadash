@@ -21,18 +21,6 @@ def main():
 
 	if choice == 'EDA':
 		st.subheader("Exploratory Data Analysis")
-		# initialize list of lists 
-		data = [['tom', 10,10,10], ['nick', 15,10,10], ['juli', 14,10,10]] 
-
-		# Create the pandas DataFrame 
-		df = pd.DataFrame(data, columns = ['Name', 'd1','d2','d3']) 
-
-		# print dataframe. 
-		df = df.set_index('Name')
-		df = df.T
-		st.line_chart(df)
-
-		
 		data = st.file_uploader("Upload a Dataset", type=["csv", "txt"])
 		if data is not None:
 			df = pd.read_csv(data)
