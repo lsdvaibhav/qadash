@@ -33,12 +33,8 @@ def main():
 			if st.button("show chart"): 
 				selectedDf = df[df['Item'].isin(options)]
 				st.dataframe(selectedDf)
-				
-				selectedDf.index = selectedDf['Item']
-				selectedDf = selectedDf.drop(columns=['Item','Website','Quantity']) 
-				st.dataframe(selectedDf)
+				selectedDf = selectedDf.drop(columns=['Website','Quantity']) 
 				df = selectedDf.transpose()
-				df.reset_index(drop=True, inplace=True)
 				st.dataframe(df)
 				st.line_chart(df)
 
