@@ -41,7 +41,7 @@ def main():
 				selectedDf.set_index('Item')
 				
 				df = selectedDf.transpose()
-				
+				st.dataframe(df)
 				st.line_chart(df)
 			
 
