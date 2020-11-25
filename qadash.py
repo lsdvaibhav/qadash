@@ -61,10 +61,11 @@ def main():
 				st.write('You selected:', options)
 			
 				selectedDf = df['Item'].isin(options)
-				selectdDf.set_index('Item')
+				
 				selectedDf = selectedDf[:,4:]
-
+				selectedDf.drop(['Website','Quantity'],axis =1)
 				st.dataframe(selectedDf)
+				
 				df = selectedDf.transpose()
 				st.line_chart(df)
 			df = pd.read_csv(data)
