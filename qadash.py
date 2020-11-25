@@ -46,25 +46,27 @@ def main():
 		plt.legend()
 		# Display a figure.
 		plt.show()
-		df.set_index('Item')
+		
 		df = df.transpose()
+		df.set_index('Item')
 		st.line_chart(df)
 		data = st.file_uploader("Upload a Dataset", type=["csv", "txt"])
 		if data is not None:
 			df = pd.read_csv(data)
 
 			itemList = df['Item']
-			itemListChecked = []
-			options = st.multiselect('Select items to compare',itemList)
-			st.write('You selected:', options)
-			for each in itemList:
-				c = st.checkbox(each)
-				itemListChecked.append(c)
 
-			selectedDf = df[c]
+			options = st.multiselect('Select items to compare',itemList)
+
+			st.write('You selected:', options)
+			selectedDf = df['Item'].isin(options)
 			selectdDf.set_index('Item')
-			selectedDf = selectedDf[:,14:]
+			selectedDf = selectedDf[:,4:]
+
 			st.dataframe(selectedDf)
+			df = selectedDf.transpose()
+			df.set_index('Item')
+			st.line_chart(df)
 			df = pd.read_csv(data)
 			st.dataframe(df.head())
 
