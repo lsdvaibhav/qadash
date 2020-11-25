@@ -38,6 +38,7 @@ def main():
 				selectedDf = selectedDf.drop(columns=['Item','Website','Quantity']) 
 				st.dataframe(selectedDf)
 				df = selectedDf.transpose()
+				df.reset_index(drop=True, inplace=True)
 				st.dataframe(df)
 				st.line_chart(df)
 
