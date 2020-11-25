@@ -57,7 +57,7 @@ def main():
 			itemList = df['Item']
 
 			options = st.multiselect('Select items to compare',itemList)
-			if len(listt) != 0: 
+			if len(optiions) != 0: 
 				st.write('You selected:', options)
 			
 				selectedDf = df['Item'].isin(options)
