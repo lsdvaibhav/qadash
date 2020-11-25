@@ -52,6 +52,19 @@ def main():
 		data = st.file_uploader("Upload a Dataset", type=["csv", "txt"])
 		if data is not None:
 			df = pd.read_csv(data)
+
+			itemList = df['Item']
+			itemListChecked = []
+
+			for each in itemList:
+				c = st.checkbox(each)
+				itemListChecked.append(c)
+
+			selectedDf = df[c]
+			selectdDf.set_index('Item')
+			selectedDf = selectedDf[:,14:]
+			st.dataframe(selectedDf)
+			df = pd.read_csv(data)
 			st.dataframe(df.head())
 
 			if st.checkbox("Show Shape"):
