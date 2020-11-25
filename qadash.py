@@ -21,8 +21,15 @@ def main():
 
 	if choice == 'EDA':
 		st.subheader("Exploratory Data Analysis")
-		import matplotlib.pyplot as plt
-		import pandas as pd
+		# initialize list of lists 
+		data = [['tom', 10,10,10], ['nick', 15,10,10], ['juli', 14,10,10]] 
+
+		# Create the pandas DataFrame 
+		df = pd.DataFrame(data, columns = ['Name', 'd1','d2','d3']) 
+
+		# print dataframe. 
+		df = df.set_index('Name')
+		st.line_chart(df)
 
 		
 		data = st.file_uploader("Upload a Dataset", type=["csv", "txt"])
@@ -33,9 +40,8 @@ def main():
 			if st.button("show chart"): 
 				selectedDf = df[df['Item'].isin(options)]
 				st.dataframe(selectedDf)
-				selectedDf = selectedDf.drop(columns=['Website','Quantity']) 
 				df = selectedDf.transpose()
-				st.dataframe(df)
+				df = df.drop(['Item','Website','Quantity']) 
 				st.line_chart(df)
 
 	elif choice == 'Plots':
