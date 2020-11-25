@@ -57,12 +57,9 @@ def main():
 			itemList = df['Item']
 
 			options = st.multiselect('Select items to compare',itemList)
+			st.write('You selected:', options)
 			if len(options) != 0: 
-				st.write('You selected:', options)
-			
 				selectedDf = df['Item'].isin(options)
-				
-				selectedDf = selectedDf[:,4:]
 				selectedDf.drop(['Website','Quantity'],axis =1)
 				st.dataframe(selectedDf)
 				
