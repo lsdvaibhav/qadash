@@ -24,32 +24,7 @@ def main():
 		import matplotlib.pyplot as plt
 		import pandas as pd
 
-		# initialize list of lists 
-		data = [['item1',16,16,16,16,18,16,18], ['item2',15,15,15,14,15,14,15], ['item3', 14,14,14,14,13,14,13]] 
-
-		# Create the pandas DataFrame 
-		df = pd.DataFrame(data, columns = ['Item','d1','d2','d3','d4','d5','d6','d7']) 
-		x = ['d1','d2','d3','d4','d5','d6','d7']
-		for index in df.index:
-		  y = [df.loc[index]['d1'],df.loc[index]['d2'],df.loc[index]['d3'],df.loc[index]['d4'],df.loc[index]['d5'],df.loc[index]['d6'],df.loc[index]['d7']]
-		  label = df.loc[index]['Item']
-		  # plotting the line 1 points 
-		  plt.plot(x,y, label = label)
-
-
-		plt.xlabel('Dates')
-		# Set the y axis label of the current axis.
-		plt.ylabel('Prices')
-		# Set a title of the current axes.
-		plt.title('More than one items are compared')
-		# show a legend on the plot
-		plt.legend()
-		# Display a figure.
-		plt.show()
 		
-		df = df.transpose()
-		
-		st.line_chart(df)
 		data = st.file_uploader("Upload a Dataset", type=["csv", "txt"])
 		if data is not None:
 			df = pd.read_csv(data)
@@ -63,47 +38,12 @@ def main():
 				selectedDf = df[df['Item'].isin(options)]
 				st.dataframe(selectedDf)
 				selectedDf.drop(columns=['Website','Quantity']) 
+				selectedDf.set_index('Item')
 				
 				df = selectedDf.transpose()
-				df.set_index('Item')
+				
 				st.line_chart(df)
-			df = pd.read_csv(data)
-			st.dataframe(df.head())
-
-			if st.checkbox("Show Shape"):
-				st.write(df.shape)
-
-			if st.checkbox("Show Columns"):
-				all_columns = df.columns.to_list()
-				st.write(all_columns)
-
-			if st.checkbox("Summary"):
-				st.write(df.describe())
-
-			if st.checkbox("Show Selected Columns"):
-				selected_columns = st.multiselect("Select Columns",all_columns)
-				new_df = df[selected_columns]
-				st.dataframe(new_df)
-
-			if st.checkbox("Show Value Counts"):
-				st.write(df.iloc[:,-1].value_counts())
-
-			if st.checkbox("Correlation Plot(Matplotlib)"):
-				plt.matshow(df.corr())
-				st.pyplot()
-
-			if st.checkbox("Correlation Plot(Seaborn)"):
-				st.write(sns.heatmap(df.corr(),annot=True))
-				st.pyplot()
-
-
-			if st.checkbox("Pie Plot"):
-				all_columns = df.columns.to_list()
-				column_to_plot = st.selectbox("Select 1 Column",all_columns)
-				pie_plot = df[column_to_plot].value_counts().plot.pie(autopct="%1.1f%%")
-				st.write(pie_plot)
-				st.pyplot()
-
+			
 
 
 	elif choice == 'Plots':
