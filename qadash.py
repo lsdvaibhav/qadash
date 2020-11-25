@@ -55,7 +55,8 @@ def main():
 
 			itemList = df['Item']
 			itemListChecked = []
-
+			options = st.multiselect('Select items to compare',itemList)
+			st.write('You selected:', options)
 			for each in itemList:
 				c = st.checkbox(each)
 				itemListChecked.append(c)
