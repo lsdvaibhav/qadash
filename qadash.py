@@ -46,6 +46,8 @@ def main():
 		plt.legend()
 		# Display a figure.
 		plt.show()
+		df.set_index('Item')
+		df = df.transpose()
 		st.line_chart(df)
 		data = st.file_uploader("Upload a Dataset", type=["csv", "txt"])
 		if data is not None:
