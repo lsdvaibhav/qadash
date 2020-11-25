@@ -33,8 +33,9 @@ def main():
 			if st.button("show chart"): 
 				selectedDf = df[df['Item'].isin(options)]
 				st.dataframe(selectedDf)
-				selectedDf = selectedDf.drop(columns=['Website','Quantity']) 
+				
 				selectedDf.index = selectedDf['Item']
+				selectedDf = selectedDf.drop(columns=['Item','Website','Quantity']) 
 				st.dataframe(selectedDf)
 				df = selectedDf.transpose()
 				st.dataframe(df)
