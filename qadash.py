@@ -29,6 +29,7 @@ def main():
 
 		# print dataframe. 
 		df = df.set_index('Name')
+		df = df.T
 		st.line_chart(df)
 
 		
