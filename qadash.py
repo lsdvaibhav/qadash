@@ -28,23 +28,17 @@ def main():
 		data = st.file_uploader("Upload a Dataset", type=["csv", "txt"])
 		if data is not None:
 			df = pd.read_csv(data)
-
 			itemList = df['Item']
-
 			options = st.multiselect('Select items to compare',itemList)
-			st.write('You selected:', options)
-			st.write(type(options))
 			if st.button("show chart"): 
 				selectedDf = df[df['Item'].isin(options)]
 				st.dataframe(selectedDf)
-				selectedDf.drop(columns=['Website','Quantity']) 
-				selectedDf.set_index('Item')
-				
+				selectedDf = selectedDf.drop(columns=['Website','Quantity']) 
+				selectedDf.index = selectedDf['Item']
+				st.dataframe(selectedDf)
 				df = selectedDf.transpose()
 				st.dataframe(df)
 				st.line_chart(df)
-			
-
 
 	elif choice == 'Plots':
 		st.subheader("Data Visualization")
