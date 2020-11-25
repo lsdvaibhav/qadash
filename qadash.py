@@ -61,11 +61,11 @@ def main():
 			st.write(type(options))
 			if st.button("show chart"): 
 				selectedDf = df[df['Item'].isin(options)]
-				#selectedDf.drop(columns=['Website','Quantity']) 
 				st.dataframe(selectedDf)
+				selectedDf.drop(columns=['Website','Quantity']) 
 				
 				df = selectedDf.transpose()
-				
+				df.set_index('Item')
 				st.line_chart(df)
 			df = pd.read_csv(data)
 			st.dataframe(df.head())
