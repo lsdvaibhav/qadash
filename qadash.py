@@ -21,7 +21,31 @@ def main():
 
 	if choice == 'EDA':
 		st.subheader("Exploratory Data Analysis")
+		import matplotlib.pyplot as plt
+		import pandas as pd
 
+		# initialize list of lists 
+		data = [['item1',16,16,16,16,18,16,18], ['item2',15,15,15,14,15,14,15], ['item3', 14,14,14,14,13,14,13]] 
+
+		# Create the pandas DataFrame 
+		df = pd.DataFrame(data, columns = ['Item','d1','d2','d3','d4','d5','d6','d7']) 
+		x = ['d1','d2','d3','d4','d5','d6','d7']
+		for index in df.index:
+		  y = [df.loc[index]['d1'],df.loc[index]['d2'],df.loc[index]['d3'],df.loc[index]['d4'],df.loc[index]['d5'],df.loc[index]['d6'],df.loc[index]['d7']]
+		  label = df.loc[index]['Item']
+		  # plotting the line 1 points 
+		  plt.plot(x,y, label = label)
+
+
+		plt.xlabel('Dates')
+		# Set the y axis label of the current axis.
+		plt.ylabel('Prices')
+		# Set a title of the current axes.
+		plt.title('More than one items are compared')
+		# show a legend on the plot
+		plt.legend()
+		# Display a figure.
+		plt.show()
 		data = st.file_uploader("Upload a Dataset", type=["csv", "txt"])
 		if data is not None:
 			df = pd.read_csv(data)
