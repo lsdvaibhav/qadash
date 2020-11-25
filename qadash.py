@@ -57,15 +57,16 @@ def main():
 			itemList = df['Item']
 
 			options = st.multiselect('Select items to compare',itemList)
+			if len(listt) != 0: 
+				st.write('You selected:', options)
+			
+				selectedDf = df['Item'].isin(options)
+				selectdDf.set_index('Item')
+				selectedDf = selectedDf[:,4:]
 
-			st.write('You selected:', options)
-			selectedDf = df['Item'].isin(options)
-			selectdDf.set_index('Item')
-			selectedDf = selectedDf[:,4:]
-
-			st.dataframe(selectedDf)
-			df = selectedDf.transpose()
-			st.line_chart(df)
+				st.dataframe(selectedDf)
+				df = selectedDf.transpose()
+				st.line_chart(df)
 			df = pd.read_csv(data)
 			st.dataframe(df.head())
 
