@@ -48,7 +48,7 @@ def main():
 		plt.show()
 		
 		df = df.transpose()
-		df.set_index('Item')
+		
 		st.line_chart(df)
 		data = st.file_uploader("Upload a Dataset", type=["csv", "txt"])
 		if data is not None:
@@ -65,7 +65,6 @@ def main():
 
 			st.dataframe(selectedDf)
 			df = selectedDf.transpose()
-			df.set_index('Item')
 			st.line_chart(df)
 			df = pd.read_csv(data)
 			st.dataframe(df.head())
