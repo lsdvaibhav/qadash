@@ -35,7 +35,7 @@ def main():
 	# Set the y axis label of the current axis.
 	ax.yaxis.set_label_text('y - axis')
 	# Set a title of the current axes.
-	ax.title('Two or more lines on same plot with suitable legends ')
+	ax.set_title('Two or more lines on same plot with suitable legends ')
 	# show a legend on the plot
 	ax.legend()
 	# Display a figure.
