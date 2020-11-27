@@ -18,29 +18,7 @@ def main():
 
 	activities = ["EDA","Plots"]	
 	choice = st.sidebar.selectbox("Select Activities",activities)
-	import matplotlib.pyplot as plt
-	# line 1 points
-	x1 = [10,20,30]
-	y1 = [20,40,10]
-	# plotting the line 1 points 
-	plt.style.use('seaborn-darkgrid')
-	fig ,ax  = plt.subplots()
-	ax.plot(x1, y1, marker='o', markersize=10, linewidth=2, label = "line 1")
-	# line 2 points
-	x2 = [10,20,30]
-	y2 = [40,10,30]
-	# plotting the line 2 points 
-	ax.plot(x2, y2, marker='o', markersize=10, linewidth=2, label = "line 2")
-	ax.xaxis.set_label_text('x - axis')
-	# Set the y axis label of the current axis.
-	ax.yaxis.set_label_text('y - axis')
-	# Set a title of the current axes.
-	ax.set_title('Two or more lines on same plot with suitable legends ')
-	# show a legend on the plot
-	ax.legend()
-	# Display a figure.
 	
-	st.pyplot(fig)
 	
 	if choice == 'EDA':
 		st.subheader("Exploratory Data Analysis")
