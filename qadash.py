@@ -40,7 +40,7 @@ def main():
 	# Display a figure.
 	fig ,ax  = plt.subplots()
 	st.pyplot(fig)
-	plt.show()
+	
 	if choice == 'EDA':
 		st.subheader("Exploratory Data Analysis")
 		data = st.file_uploader("Upload a Dataset", type=["csv", "txt"])
