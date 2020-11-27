@@ -31,9 +31,9 @@ def main():
 	y2 = [40,10,30]
 	# plotting the line 2 points 
 	ax.plot(x2, y2, marker='o', markersize=10, linewidth=2, label = "line 2")
-	ax.xlabel('x - axis')
+	ax.xaxis.set_label_text('x - axis')
 	# Set the y axis label of the current axis.
-	ax.ylabel('y - axis')
+	ax.yaxis.set_label_text('y - axis')
 	# Set a title of the current axes.
 	ax.title('Two or more lines on same plot with suitable legends ')
 	# show a legend on the plot
