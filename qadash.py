@@ -24,7 +24,7 @@ def main():
 		st.subheader("Exploratory Data Analysis")
 		data = st.file_uploader("Upload a Dataset", type=["csv", "txt"])
 		if data is not None:
-			df = pd.read_csv(data)
+			df = pd.read_csv(data , error_bad_lines=False)
 			itemList = df['Item']
 			options = st.multiselect('Select items to compare',itemList)
 			if st.button("show chart"): 
