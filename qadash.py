@@ -14,75 +14,21 @@ import seaborn as sns
 
 
 def main():
-	"""Semi Automated ML App with Streamlit """
-
-	activities = ["EDA","Plots"]	
-	choice = st.sidebar.selectbox("Select Activities",activities)
-	
-	
-	if choice == 'EDA':
-		st.subheader("Exploratory Data Analysis")
-		data = st.file_uploader("Upload a Dataset", type=["csv", "txt"])
-		if data is not None:
-			df = pd.read_csv(data , error_bad_lines=False)
-			itemList = df['Item']
-			options = st.multiselect('Select items to compare',itemList)
-			if st.button("show chart"): 
-				selectedDf = df[df['Item'].isin(options)]
-				st.dataframe(selectedDf)
-				dff = selectedDf.drop(['Item','Website','Quantity'] , axis = 1)
-				df = dff.transpose()
-				 
-				st.line_chart(df)
-				df = df.replace({'-': None})
-				df = df.astype(float)
-				df = df.fillna(df.mean())
-				st.line_chart(df)
-				
-
-	elif choice == 'Plots':
-		st.subheader("Data Visualization")
-		data = st.file_uploader("Upload a Dataset", type=["csv", "txt"])
-		if data is not None:
-			df = pd.read_csv(data)
-			st.dataframe(df.head())
-
-
-			if st.checkbox("Show Value Counts"):
-				st.write(df.iloc[:,-1].value_counts().plot(kind='bar'))
-				st.pyplot()
-		
-			# Customizable Plot
-
-			all_columns_names = df.columns.tolist()
-			type_of_plot = st.selectbox("Select Type of Plot",["area","bar","line","hist","box","kde"])
-			selected_columns_names = st.multiselect("Select Columns To Plot",all_columns_names)
-
-			if st.button("Generate Plot"):
-				st.success("Generating Customizable Plot of {} for {}".format(type_of_plot,selected_columns_names))
-
-				# Plot By Streamlit
-				if type_of_plot == 'area':
-					cust_data = df[selected_columns_names]
-					st.area_chart(cust_data)
-
-				elif type_of_plot == 'bar':
-					cust_data = df[selected_columns_names]
-					st.bar_chart(cust_data)
-
-				elif type_of_plot == 'line':
-					cust_data = df[selected_columns_names]
-					st.line_chart(cust_data)
-
-				# Custom Plot 
-				elif type_of_plot:
-					cust_plot= df[selected_columns_names].plot(kind=type_of_plot)
-					st.write(cust_plot)
-					st.pyplot()
-
-
-	
-
-
+	"""Semi Automated analysis App with Streamlit """
+	st.subheader("Exploratory Data Analysis")
+	data = st.file_uploader("Upload a Dataset", type=["csv", "txt"])
+	if data is not None:
+		df = pd.read_csv(data , error_bad_lines=False)
+		itemList = df['Item']
+		options = st.multiselect('Select items to compare',itemList)
+		if st.button("show chart"): 
+			selectedDf = df[df['Item'].isin(options)]
+			st.dataframe(selectedDf)
+			dff = selectedDf.drop(['Item','Website','Quantity'] , axis = 1)
+			df = dff.transpose()
+			df = df.replace({'-': None})
+			df = df.astype(float)
+			df = df.fillna(df.mean())
+			st.line_chart(df)
 if __name__ == '__main__':
 	main()
