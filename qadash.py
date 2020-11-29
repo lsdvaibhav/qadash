@@ -35,8 +35,9 @@ def main():
 				 
 				st.line_chart(df)
 				df = df.replace({'-': None})
-				df = df.fillna(df.mean())
+				df = df.fillna(int(df.mean()))
 				st.line_chart(df)
+				st.write(df.info())
 
 	elif choice == 'Plots':
 		st.subheader("Data Visualization")
