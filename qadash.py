@@ -34,8 +34,11 @@ def main():
 				df = selectedDf.transpose()
 				df = df.drop(['Item','Website','Quantity']) 
 				st.line_chart(df)
-				st.write(selectedDf.loc[930])
-				st.write(df['930'])
+				st.write(selectedDf.loc[8])
+				st.write(df['8'])
+				
+				df = df.fillna(df.mean())
+				st.line_chart(df)
 
 	elif choice == 'Plots':
 		st.subheader("Data Visualization")
