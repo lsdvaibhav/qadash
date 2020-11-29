@@ -30,9 +30,12 @@ def main():
 			if st.button("show chart"): 
 				selectedDf = df[df['Item'].isin(options)]
 				st.dataframe(selectedDf)
+				
 				df = selectedDf.transpose()
 				df = df.drop(['Item','Website','Quantity']) 
 				st.line_chart(df)
+				st.write(selectedDf.loc[930])
+				st.write(df['930'])
 
 	elif choice == 'Plots':
 		st.subheader("Data Visualization")
